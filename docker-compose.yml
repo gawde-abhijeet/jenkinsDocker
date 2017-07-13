@@ -30,5 +30,8 @@ nginx:
   - /etc/letsencrypt:/etc/letsencrypt
 slave:
  build: jenkins-slave
+ volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
+  - ${DOCKER_PATH}:/usr/bin/docker
 slavedotnet:
  build: jenkins-dotnetcore-slave
