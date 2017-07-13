@@ -1,5 +1,7 @@
 data:
  build: jenkins-data
+ volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
 master:
  build: jenkins-master
  volumes_from:
