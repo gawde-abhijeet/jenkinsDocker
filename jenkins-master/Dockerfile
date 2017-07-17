@@ -100,6 +100,14 @@ RUN chmod +x /usr/local/bin/jenkins-support
 RUN chmod +x /usr/local/bin/install-plugins.sh
 RUN chmod +x /usr/local/bin/jenkins.sh
 
+## --------------------------------------------------------------------------------------------------------------------
+## AG: To give the jenkins user sudo privileges in order to be able to run Docker commands inside the container
+RUN apt-get update \
+      && apt-get install -y sudo \
+      && rm -rf /var/lib/apt/lists/*
+RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
+## --------------------------------------------------------------------------------------------------------------------
+
 # Switch to the jenkins user
 USER ${JENKINS_USER}
 
