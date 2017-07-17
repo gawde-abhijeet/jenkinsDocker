@@ -1,14 +1,14 @@
 data:
  build: jenkins-data
- volumes:
-  - /var/run/docker.sock:/var/run/docker.sock
-  - ${DOCKER_PATH}:/usr/bin/docker
 master:
  build: jenkins-master
  volumes_from:
   - data
  ports:
  - "50000:50000"
+ volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
+  - ${DOCKER_PATH}:/usr/bin/docker
 # registry:
 #  image: registry:2
 #  ports: 
